@@ -4,6 +4,7 @@ services:
     build:
       context: ./jenkins
       dockerfile: Dockerfile
+    user: root             # <-- add this line here
     privileged: true
     restart: unless-stopped
     ports:
@@ -16,7 +17,7 @@ services:
   app:
     build:
       context: ./app
-      dockerfile: Dockerfile   # <-- ensures the correct Dockerfile is used
+      dockerfile: Dockerfile
     restart: unless-stopped
     ports:
       - "80:3000"
